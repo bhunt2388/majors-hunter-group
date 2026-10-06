@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Majors Hunter Group — Investor Room (Confidential)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A1220; --navy2:#111b2e; --navy3:#16233C;
+    --ivory:#F5F2EA; --ivory2:#EDE8DA;
+    --gold:#C9A961; --gold-dim:#A8833F;
+    --stone:#6E665A; --stone-dim:#8d8572;
+    --rule: rgba(245,242,234,0.10); --rule-strong: rgba(245,242,234,0.18);
+    --good:#9fd1a4;
+    --serif:'Playfair Display',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--navy); color:var(--ivory); font-family:var(--sans); line-height:1.65; font-weight:300; -webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 6vw;}
+  .eyebrow{font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:0.26em; text-transform:uppercase; color:var(--gold);}
+
+  /* GATE */
+  #gate{position:fixed; inset:0; z-index:1000; background:var(--navy); display:flex; align-items:center; justify-content:center; padding:24px;}
+  .gate-box{max-width:420px; width:100%; text-align:center;}
+  .gate-mark{font-family:var(--serif); font-weight:700; font-size:34px; color:var(--gold); border-top:1px solid var(--gold-dim); border-bottom:1px solid var(--gold-dim); padding:10px 26px; display:inline-block; margin-bottom:26px;}
+  .gate-box h1{font-family:var(--serif); font-weight:400; font-size:22px; color:var(--ivory); margin-bottom:10px;}
+  .gate-box p{font-size:13.5px; color:var(--stone-dim); margin-bottom:26px;}
+  .gate-box input{width:100%; background:var(--navy3); border:1px solid var(--rule-strong); color:var(--ivory); font-family:var(--mono); font-size:14px; padding:14px 16px; border-radius:2px; text-align:center; letter-spacing:0.05em;}
+  .gate-box button{width:100%; margin-top:12px; font-family:var(--mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; background:var(--gold); color:var(--navy); border:none; padding:14px 28px; border-radius:2px; cursor:pointer;}
+  .gate-box button:hover{background:#dfc07c;}
+  #gateError{margin-top:14px; font-family:var(--mono); font-size:11px; color:#e09a8a; min-height:14px;}
+
+  #content{display:none;}
+
+  header.doc-head{display:flex; align-items:center; justify-content:space-between; padding:26px 0; border-bottom:1px solid var(--rule); margin-bottom:10px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand .mhg{font-family:var(--serif); font-weight:700; font-size:14px; color:var(--gold); border:1px solid var(--gold-dim); padding:4px 8px;}
+  .brand .name{font-family:var(--serif); font-size:14px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ivory);}
+  .doc-meta{text-align:right; font-family:var(--mono); font-size:9.5px; letter-spacing:0.08em; color:var(--stone-dim); text-transform:uppercase; line-height:1.8;}
+
+  .hero{padding:50px 0 10px;}
+  .hero h1{font-family:var(--serif); font-weight:400; font-size:clamp(1.9rem,4vw,2.6rem); color:var(--ivory); line-height:1.2;}
+  .hero p{margin-top:16px; font-size:14.5px; color:#B6B0A1; max-width:720px;}
+
+  section{padding:50px 0; border-bottom:1px solid var(--rule);}
+  .section-head h2{font-family:var(--serif); font-weight:400; font-size:1.5rem; color:var(--ivory); margin-top:8px;}
+  .section-head p{margin-top:10px; font-size:13.5px; color:var(--stone-dim); max-width:720px;}
+
+  .deal-card{background:var(--navy2); border:1px solid var(--rule); border-radius:3px; padding:32px; margin-top:24px;}
+  .deal-card .tag{display:inline-block; font-family:var(--mono); font-size:9.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold-dim); padding:5px 11px; border-radius:2px; margin-bottom:16px;}
+  .deal-card h3{font-family:var(--serif); font-weight:400; font-size:1.5rem; color:var(--ivory); margin-bottom:10px;}
+  .deal-card .loc{font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--stone-dim); margin-bottom:18px;}
+  .deal-card p.desc{font-size:13.5px; color:#B6B0A1; max-width:760px; margin-bottom:22px; line-height:1.6;}
+  .deal-terms{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-bottom:18px;}
+  .deal-terms .t{background:var(--navy); padding:16px 16px;}
+  .deal-terms .t .k{font-family:var(--mono); font-size:8.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone-dim); margin-bottom:6px;}
+  .deal-terms .t .v{font-family:var(--serif); font-size:1.1rem; color:var(--gold);}
+  .deal-note{font-size:11.5px; color:var(--stone-dim); line-height:1.7; border-left:2px solid var(--gold-dim); padding-left:14px;}
+  .deal-note strong{color:var(--ivory); font-weight:600;}
+
+  table{width:100%; border-collapse:collapse; font-size:12.5px; margin-top:16px;}
+  thead th{text-align:left; font-family:var(--mono); font-size:9px; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone-dim); padding:10px 12px; border-bottom:1px solid var(--rule-strong);}
+  tbody td{padding:12px; border-bottom:1px solid var(--rule); color:var(--ivory); vertical-align:middle;}
+  .num-cell{font-family:var(--mono); font-size:12px; text-align:right;}
+  tfoot td{padding:14px 12px; font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--stone-dim); border-top:1px solid var(--rule-strong);}
+  tfoot .num-cell{font-family:var(--serif); font-size:15px; text-transform:none; color:var(--gold);}
+
+  .disclosure{background:var(--navy2); border:1px solid var(--rule); border-radius:3px; padding:26px 30px; margin:40px 0; font-size:11.5px; color:var(--stone-dim); line-height:1.8;}
+  .disclosure h4{font-family:var(--mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ivory); margin-bottom:10px;}
+
+  footer{padding:40px 0; font-family:var(--mono); font-size:9.5px; color:var(--stone-dim); letter-spacing:0.03em; line-height:1.9;}
+  .back-link{display:inline-block; margin-bottom:30px; font-family:var(--mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-dim);}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-mark">MHG</div>
+    <h1>Investor Room</h1>
+    <p>Confidential — full deal terms for qualified investors and lenders only. Enter the access code provided by Majors Hunter Group.</p>
+    <input type="password" id="gatePass" placeholder="Access code" autocomplete="off">
+    <button id="gateSubmit">Enter →</button>
+    <div id="gateError"></div>
+  </div>
+</div>
+
+<div id="content">
+  <div class="wrap">
+    <a href="/" class="back-link">← Back to majorshuntergroup.com</a>
+    <header class="doc-head">
+      <div class="brand"><div class="mhg">MHG</div><span class="name">Majors Hunter Group</span></div>
+      <div class="doc-meta">Investor Room<br>Confidential — Qualified Parties Only<br>October 2026</div>
+    </header>
+
+    <div class="hero">
+      <div class="eyebrow">Full Portfolio Detail</div>
+      <h1>Current positions — collateral, terms, and open items</h1>
+      <p>This room contains the full lender/investor-grade detail behind the public portfolio summary, pulled directly from active deal collateral for Majors Hunter Group and partner entity Black River Investments (common ownership). Figures below are as prepared in underlying deal documents and are not guaranteed outcomes.</p>
+    </div>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">Real Estate · Sedona, Arizona</div>
+        <h2>Sedona Acquisition Bridge Loan</h2>
+      </div>
+      <div class="deal-card">
+        <div class="tag">Real Estate Only · Acquisition Bridge</div>
+        <h3>185 Roadrunner Drive &amp; 3130 W State Route 89A</h3>
+        <div class="loc">Sedona, Arizona 86336</div>
+        <p class="desc">A first-position acquisition bridge loan request secured solely by two Sedona, Arizona real properties. No operating business, revenue, or other asset is pledged, referenced, or required as collateral.</p>
+        <div class="deal-terms">
+          <div class="t"><div class="k">Loan Requested</div><div class="v">$2,500,000</div></div>
+          <div class="t"><div class="k">Collateral Value</div><div class="v">$3,550,000</div></div>
+          <div class="t"><div class="k">Current LTV</div><div class="v">~70%</div></div>
+          <div class="t"><div class="k">Term</div><div class="v">6 Months</div></div>
+          <div class="t"><div class="k">Rate</div><div class="v">12% + 2 pts</div></div>
+        </div>
+        <div class="deal-note"><strong>Security:</strong> First-position deed of trust on both parcels together. $900,000 sponsor equity committed separately, outside the loan. 185 Roadrunner Dr is a Dec 2024 appraisal; 3130 W SR-89A is a 2022 purchase price — an independent appraisal is anticipated before final loan documentation.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">Hospitality &amp; Development · Fort Myers, Florida</div>
+        <h2>Bluewater Edison Towers</h2>
+      </div>
+      <div class="deal-card">
+        <div class="tag">First-Lien Construction Facility</div>
+        <h3>Bluewater Edison Towers — Secured Lending Opportunity</h3>
+        <div class="loc">2631 First Street, Fort Myers, Florida 33916 — Caloosahatchee River District</div>
+        <p class="desc">Twin 22-story, 220-unit luxury waterfront condominium towers, fully entitled, with site work and 1,100 deep pile foundations complete. MHG principals (66.67% owner via Black River Investments) and Prevost Development (33.33%) are arranging capital to fund vertical construction.</p>
+        <div class="deal-terms">
+          <div class="t"><div class="k">Senior Draw</div><div class="v">$70.6M</div></div>
+          <div class="t"><div class="k">Senior Rate</div><div class="v">9.8% (term sheet)</div></div>
+          <div class="t"><div class="k">New Capital Rate</div><div class="v">12%</div></div>
+          <div class="t"><div class="k">Total Cost to Complete</div><div class="v">$187.7M</div></div>
+          <div class="t"><div class="k">Projected Net Profit</div><div class="v">$40–43M</div></div>
+        </div>
+        <div class="deal-note"><strong>Open items:</strong> Integritas Capital senior facility is a signed term sheet, not yet closed/funded. Building permit submitted, issuance not yet confirmed. Current as-is appraisal pending. Developer equity committed ~$47.48M including buyer deposits.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">Equity Introduction · Las Vegas, Nevada</div>
+        <h2>Midtown Las Vegas Platform Equity</h2>
+      </div>
+      <div class="deal-card">
+        <div class="tag">Introduced Opportunity — No MHG/BRI Position</div>
+        <h3>Midtown Las Vegas — Z Life Company Platform</h3>
+        <div class="loc">917 S 1st St &amp; adjoining parcels, Las Vegas, NV 89101</div>
+        <p class="desc">Black River Investments is introducing this opportunity directly between Z Life Company and a qualified capital source — Black River holds no position, fee, or participation in this specific raise. Z Life owns 3.62 acres across six contiguous blocks, free and clear, with Phase I (The English Hotel) built and operating.</p>
+        <div class="deal-terms">
+          <div class="t"><div class="k">Equity Sought</div><div class="v">$60M</div></div>
+          <div class="t"><div class="k">Projected LP IRR (3-Yr)</div><div class="v">35.25%</div></div>
+          <div class="t"><div class="k">Projected MOIC</div><div class="v">2.08x</div></div>
+          <div class="t"><div class="k">Total Platform Value</div><div class="v">$443.9M</div></div>
+        </div>
+        <div class="deal-note"><strong>Open items:</strong> Phase II/III pre-sale percentages are sponsor-reported, not independently verified. Phases IV–VI have no committed financing and remain planning-stage. A separate EB-5 capital stack and $5M secured note exist against portions of this platform. Projected returns are sponsor pro forma.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">Structured Credit &amp; Residential · Las Vegas, Nevada</div>
+        <h2>Vegas Note Participation &amp; Condo Buyback</h2>
+      </div>
+      <div class="deal-card">
+        <div class="tag">Structured Credit</div>
+        <h3>English Hotel Note Participation</h3>
+        <div class="loc">Midtown Las Vegas, Nevada — The English Hotel &amp; Residences</div>
+        <p class="desc">A $2,000,000 participation in a $5,000,000 secured promissory note encumbering The English Hotel project.</p>
+        <div class="deal-terms">
+          <div class="t"><div class="k">Secured Note (Total)</div><div class="v">$5.0M</div></div>
+          <div class="t"><div class="k">Position</div><div class="v">$2.0M</div></div>
+          <div class="t"><div class="k">Investor Ask</div><div class="v">$300,000</div></div>
+          <div class="t"><div class="k">Rate</div><div class="v">36% APR</div></div>
+          <div class="t"><div class="k">Maturity</div><div class="v">Dec 31, 2026</div></div>
+        </div>
+      </div>
+      <div class="deal-card">
+        <div class="tag">Residential · Developer Buyback</div>
+        <h3>Midtown Condo Buyback Option</h3>
+        <div class="loc">The English Residences at Midtown Development — 917 1st Street, Las Vegas, Nevada</div>
+        <p class="desc">Invested capital is secured by a binding Developer Buyback Agreement covering seventeen fifth-floor units. The developer's repurchase obligation is fixed by contract.</p>
+        <div class="deal-terms">
+          <div class="t"><div class="k">Investor Ask</div><div class="v">$2,000,000</div></div>
+          <div class="t"><div class="k">Return</div><div class="v">24%</div></div>
+          <div class="t"><div class="k">Term</div><div class="v">3–6 months</div></div>
+          <div class="t"><div class="k">Units</div><div class="v">17 (5th Fl.)</div></div>
+          <div class="t"><div class="k">Buyback Obligation</div><div class="v" style="font-size:0.85rem;">$16,211,000</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">Land · South Dakota &amp; Nebraska</div>
+        <h2>South Dakota Land Facility</h2>
+        <p>832.06 total acres across eleven parcels, aggregate broker CMA value $19,189,090. Any combination of parcels in an aggregate value of not less than $4,000,000 may be designated as collateral. All parcels held free and clear.</p>
+      </div>
+      <table>
+        <thead><tr><th>Parcel</th><th>Location</th><th style="text-align:right;">Acres</th><th style="text-align:right;">Broker CMA Value</th></tr></thead>
+        <tbody>
+          <tr><td>Preservation Tract</td><td>Cascade Springs Ranch, SD</td><td class="num-cell">241.34</td><td class="num-cell">$7,240,200</td></tr>
+          <tr><td>Tract 8</td><td>Cascade Springs Ranch, SD</td><td class="num-cell">65.60</td><td class="num-cell">$1,968,000</td></tr>
+          <tr><td>Lot 47</td><td>Cascade Springs Ranch, SD</td><td class="num-cell">36.41</td><td class="num-cell">$1,092,300</td></tr>
+          <tr><td>Lot 49</td><td>Cascade Springs Ranch, SD</td><td class="num-cell">31.12</td><td class="num-cell">$933,600</td></tr>
+          <tr><td>Lot 50 (part)</td><td>Cascade Springs Ranch, SD</td><td class="num-cell">23.89</td><td class="num-cell">$716,700</td></tr>
+          <tr><td>Tract 5</td><td>Cascade Springs Ranch, SD</td><td class="num-cell">55.23</td><td class="num-cell">$1,270,290</td></tr>
+          <tr><td>Tract 80</td><td>Cascade Springs Ranch, SD</td><td class="num-cell">78.13</td><td class="num-cell">$1,796,990</td></tr>
+          <tr><td>Tract 9B</td><td>Cascade Springs Ranch, SD</td><td class="num-cell">29.66</td><td class="num-cell">$682,180</td></tr>
+          <tr><td>Lot 9A</td><td>Cascade Springs Ranch, SD</td><td class="num-cell">22.97</td><td class="num-cell">$528,310</td></tr>
+          <tr><td>Tract 1 (Box Butte)</td><td>Dawes County, NE</td><td class="num-cell">171.14</td><td class="num-cell">$2,053,680</td></tr>
+          <tr><td>Tract 2 (Box Butte)</td><td>Dawes County, NE</td><td class="num-cell">75.57</td><td class="num-cell">$906,840</td></tr>
+        </tbody>
+        <tfoot><tr><td colspan="2">Full Portfolio Total</td><td class="num-cell">832.06 ac</td><td class="num-cell">$19,189,090</td></tr></tfoot>
+      </table>
+      <div class="deal-card" style="margin-top:24px;">
+        <div class="tag">Pooled Facility Terms</div>
+        <div class="deal-terms">
+          <div class="t"><div class="k">Loan Requested</div><div class="v">$2,000,000</div></div>
+          <div class="t"><div class="k">Collateral Required</div><div class="v">$4,000,000</div></div>
+          <div class="t"><div class="k">Return</div><div class="v">20% flat</div></div>
+          <div class="t"><div class="k">Term</div><div class="v">6 Months</div></div>
+        </div>
+        <div class="deal-note">Collateral values are broker CMAs/BPOs prepared by Tommy Wiles, #1 Properties Ranch and Recreation (SD tracts dated Sept 4 2025; NE tracts dated Jul 23 2025) — broker opinions, not certified appraisals.</div>
+      </div>
+      <div class="deal-card">
+        <div class="tag">Standalone Single-Parcel Option</div>
+        <h3>Tract 80 — Standalone Land Loan</h3>
+        <div class="loc">Cascade Springs Ranch, Fall River County, SD — Parcel 65085-00000-080-00</div>
+        <div class="deal-terms">
+          <div class="t"><div class="k">Loan Amount</div><div class="v">$500,000</div></div>
+          <div class="t"><div class="k">Collateral (CMA)</div><div class="v">$1,796,990</div></div>
+          <div class="t"><div class="k">Return</div><div class="v">20% flat</div></div>
+          <div class="t"><div class="k">Term</div><div class="v">6 Months</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">Residential · Nashville, Tennessee</div>
+        <h2>19 Annandale Drive Bridge Loan</h2>
+      </div>
+      <div class="deal-card">
+        <div class="tag">Single-Property Facility</div>
+        <h3>19 Annandale Drive, Nashville — Residential Bridge Loan</h3>
+        <div class="loc">19 Annandale Drive, Nashville, Tennessee 37215</div>
+        <p class="desc">A bridge loan secured by a first-position deed of trust against a single-family residence held free and clear.</p>
+        <div class="deal-terms">
+          <div class="t"><div class="k">Loan Amount</div><div class="v">$1,000,000</div></div>
+          <div class="t"><div class="k">Rate</div><div class="v">12% + 2 pts</div></div>
+          <div class="t"><div class="k">Term</div><div class="v">12 Months</div></div>
+          <div class="t"><div class="k">Est. LTV</div><div class="v">~48%</div></div>
+        </div>
+        <div class="deal-note">$2,100,000 collateral figure is an informal estimate (county assessor / automated basis), not a certified appraisal — subject to revision upon formal appraisal before closing.</div>
+      </div>
+    </section>
+
+    <div class="disclosure">
+      <h4>Disclosure</h4>
+      This room is prepared for informational and preliminary underwriting purposes only and does not constitute an offer to sell, or a solicitation of an offer to buy, any security or note. Figures above are drawn from underlying deal collateral for Majors Hunter Group and partner entity Black River Investments (common ownership) and may not reflect current market conditions. Collateral values described as broker CMAs/BPOs or informal estimates are not certified appraisals. Any offer shall be made only pursuant to definitive, executed loan, note, or purchase documentation, following completion of lender or investor due diligence and title review. Access to this room does not constitute a commitment, offer, or solicitation by Majors Hunter Group or Black River Investments.
+    </div>
+
+    <footer>
+      Majors Hunter Group · Confidential — Qualified Investors &amp; Lenders Only · info@majorshuntergroup.com
+    </footer>
+  </div>
+</div>
+
+<script>
+(function(){
+  var PASSWORD_HASH = '42fc790f1c964ceba5c580918f867aa8de1fdff2a40bec44a7ba39f722e2c21c';
+  var SESSION_KEY = 'mhg_portfolio_unlocked';
+
+  function sha256(str){
+    var buf = new TextEncoder().encode(str);
+    return crypto.subtle.digest('SHA-256', buf).then(function(hashBuf){
+      var arr = Array.from(new Uint8Array(hashBuf));
+      return arr.map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+    });
+  }
+
+  function unlock(){
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+  }
+
+  if(sessionStorage.getItem(SESSION_KEY) === '1'){
+    unlock();
+  }
+
+  document.getElementById('gateSubmit').addEventListener('click', trySubmit);
+  document.getElementById('gatePass').addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){ trySubmit(); }
+  });
+
+  function trySubmit(){
+    var val = document.getElementById('gatePass').value || '';
+    sha256(val).then(function(hash){
+      if(hash === PASSWORD_HASH){
+        sessionStorage.setItem(SESSION_KEY, '1');
+        unlock();
+      } else {
+        document.getElementById('gateError').textContent = 'Incorrect code. Try again.';
+      }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

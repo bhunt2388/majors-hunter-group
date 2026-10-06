@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Majors Hunter Group — We Acquire. We Develop. We Invest. We Build.</title>
+<meta name="description" content="Majors Hunter Group is a private holding and investment company — land, real estate, structured credit, hospitality, and strategic capital held for the long term.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A1220; --navy2:#111b2e; --navy3:#16233C;
+    --ivory:#F5F2EA; --ivory2:#EDE8DA;
+    --gold:#C9A961; --gold-dim:#A8833F;
+    --stone:#6E665A; --stone-dim:#8d8572;
+    --rule: rgba(245,242,234,0.10); --rule-strong: rgba(245,242,234,0.18);
+    --serif:'Playfair Display',Georgia,serif;
+    --sans:'Inter',-apple-system,sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--navy); color:var(--ivory); font-family:var(--sans);
+    line-height:1.65; font-weight:300; -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none;}
+  .eyebrow{font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold);}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 6vw;}
+  .rule{width:100%; height:1px; background:var(--rule);}
+
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:900;
+    padding:22px 6vw; display:flex; align-items:center; justify-content:space-between;
+    transition:background .4s ease, padding .4s ease, border-color .4s ease;
+    border-bottom:1px solid transparent;
+  }
+  nav.scrolled{ background:rgba(10,18,32,0.90); backdrop-filter:blur(14px); padding:14px 6vw; border-bottom:1px solid var(--rule); }
+  .nav-brand{display:flex; align-items:center; gap:12px;}
+  .nav-brand .mhg{font-family:var(--serif); font-weight:700; font-size:14px; color:var(--gold); border:1px solid var(--gold-dim); padding:4px 8px; letter-spacing:0.05em;}
+  .nav-brand .name{font-family:var(--serif); font-size:14px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ivory);}
+  .nav-links{display:flex; gap:34px; align-items:center;}
+  .nav-links a{font-family:var(--mono); font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--stone-dim); transition:color .3s ease;}
+  .nav-links a:hover{color:var(--ivory);}
+  .nav-cta{font-family:var(--mono); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; border:1px solid var(--gold-dim); padding:9px 18px; border-radius:2px; color:var(--gold);}
+  .nav-cta:hover{background:rgba(201,169,97,0.1);}
+
+  .hero{
+    min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:160px 6vw 100px; position:relative;
+    background:
+      radial-gradient(ellipse 900px 500px at 50% 10%, rgba(201,169,97,0.08), transparent 60%),
+      linear-gradient(180deg, #070c15 0%, var(--navy) 60%);
+  }
+  .hero-mark{font-family:var(--serif); font-weight:700; font-size:40px; color:var(--gold); border-top:1px solid var(--gold-dim); border-bottom:1px solid var(--gold-dim); padding:10px 30px; margin-bottom:30px;}
+  .hero h1{font-family:var(--serif); font-weight:400; letter-spacing:0.04em; font-size:clamp(2.4rem,6.6vw,5rem); line-height:1.08; color:var(--ivory);}
+  .hero .sub{margin-top:22px; font-family:var(--mono); font-size:12px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold);}
+  .hero .lede{margin-top:30px; max-width:600px; font-size:16.5px; font-weight:300; color:#C7C2B3;}
+  .hero .cta-row{display:flex; gap:18px; margin-top:48px; flex-wrap:wrap; justify-content:center;}
+  .btn{font-family:var(--mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; padding:15px 30px; border-radius:2px; display:inline-flex; align-items:center; gap:10px; transition:all .3s ease;}
+  .btn-primary{background:var(--gold); color:var(--navy);}
+  .btn-primary:hover{background:#dfc07c; transform:translateY(-2px);}
+  .btn-ghost{border:1px solid var(--rule-strong); color:var(--ivory);}
+  .btn-ghost:hover{border-color:var(--gold-dim); background:rgba(255,255,255,0.03); transform:translateY(-2px);}
+
+  section{padding:110px 0; position:relative;}
+  .section-alt{background:var(--navy2);}
+  .section-head{max-width:680px; margin-bottom:56px;}
+  .section-head .eyebrow{margin-bottom:18px;}
+  .section-head h2{font-family:var(--serif); font-weight:400; font-size:clamp(1.8rem,3.8vw,2.7rem); color:var(--ivory); line-height:1.22;}
+  .section-head p{margin-top:18px; font-size:15px; color:#B6B0A1; max-width:600px;}
+
+  .reveal{transition:opacity .8s cubic-bezier(.32,.72,0,1), transform .8s cubic-bezier(.32,.72,0,1);}
+  .reveal:not(.in){opacity:0.001; transform:translateY(26px);}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1 !important; transform:none !important;} }
+
+  .stat-strip{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; border:1px solid var(--rule); background:var(--rule);}
+  .stat{background:var(--navy); padding:34px 26px; text-align:center;}
+  .stat .num{font-family:var(--serif); font-size:2.1rem; color:var(--gold);}
+  .stat .lbl{margin-top:8px; font-family:var(--mono); font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--stone-dim);}
+
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule);}
+  .pillar{background:var(--navy); padding:40px 34px;}
+  .pillar .idx{font-family:var(--mono); font-size:11px; color:var(--gold-dim); letter-spacing:0.16em;}
+  .pillar h3{font-family:var(--serif); font-weight:400; font-size:20px; margin:16px 0 12px; color:var(--ivory);}
+  .pillar p{font-size:13.5px; color:#AFA999; line-height:1.7;}
+
+  .holdings{display:flex; flex-direction:column; gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:8px;}
+  .holding{background:var(--navy); display:grid; grid-template-columns:170px 1fr auto; gap:32px; align-items:center; padding:34px 36px;}
+  .holding .tag{font-family:var(--mono); font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold-dim); padding:7px 11px; border-radius:2px; text-align:center; white-space:nowrap;}
+  .holding .body h3{font-family:var(--serif); font-weight:400; font-size:20px; color:var(--ivory); margin-bottom:8px;}
+  .holding .body .loc{font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--stone-dim); margin-bottom:10px;}
+  .holding .body p{font-size:13.5px; color:#B0AA9B; max-width:560px;}
+  .holding .figure{text-align:right;}
+  .holding .figure .amt{font-family:var(--serif); font-size:1.6rem; color:var(--gold); white-space:nowrap;}
+  .holding .figure .amt-lbl{font-family:var(--mono); font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:var(--stone-dim); margin-top:5px;}
+
+  .gate-note{margin-top:30px; font-family:var(--mono); font-size:11px; letter-spacing:0.08em; color:var(--stone-dim); text-align:center;}
+  .gate-note a{color:var(--gold); border-bottom:1px solid var(--gold-dim);}
+
+  .team-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:8px;}
+  .team-card{background:var(--navy); padding:34px 26px;}
+  .team-card .initial{width:46px; height:46px; border:1px solid var(--gold-dim); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:17px; color:var(--gold); margin-bottom:22px;}
+  .team-card h4{font-family:var(--serif); font-weight:400; font-size:18px; color:var(--ivory); margin-bottom:7px;}
+  .team-card .role{font-family:var(--mono); font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone-dim);}
+
+  form.contact-form{display:flex; flex-direction:column; gap:14px;}
+  .contact-form input, .contact-form textarea{
+    background:var(--navy3); border:1px solid var(--rule-strong); color:var(--ivory);
+    font-family:var(--sans); font-size:14px; padding:14px 16px; border-radius:2px; width:100%;
+  }
+  .contact-form input::placeholder, .contact-form textarea::placeholder{color:var(--stone-dim);}
+  .contact-form textarea{min-height:100px; resize:vertical;}
+  .contact-form button{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.18em; text-transform:uppercase;
+    background:var(--gold); color:var(--navy); border:none; padding:15px 28px; border-radius:2px; cursor:pointer;
+    transition:background .3s ease;
+  }
+  .contact-form button:hover{background:#dfc07c;}
+  .contact-form button:disabled{opacity:0.6; cursor:wait;}
+  #form-status{font-family:var(--mono); font-size:11px; letter-spacing:0.05em; margin-top:4px; min-height:16px;}
+  #form-status.ok{color:#9fd1a4;}
+  #form-status.err{color:#e09a8a;}
+
+  .contact-block{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; background:var(--navy3); border:1px solid var(--rule); padding:60px 56px; border-radius:2px;}
+  .contact-block h2{font-family:var(--serif); font-weight:400; font-size:clamp(1.7rem,3.4vw,2.4rem); color:var(--ivory); line-height:1.22;}
+  .contact-block p{margin-top:16px; color:#B6B0A1; font-size:14.5px; max-width:460px;}
+
+  footer{padding:50px 0 40px; border-top:1px solid var(--rule);}
+  .footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;}
+  .footer-brand{display:flex; align-items:center; gap:12px;}
+  .footer-brand .mhg{font-family:var(--serif); font-weight:700; font-size:12px; color:var(--gold); border:1px solid var(--gold-dim); padding:3px 7px;}
+  .footer-brand span{font-family:var(--serif); font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ivory);}
+  .footer-links{display:flex; gap:28px;}
+  .footer-links a{font-family:var(--mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--stone-dim);}
+  .footer-fine{margin-top:28px; font-family:var(--mono); font-size:9.5px; color:var(--stone-dim); letter-spacing:0.03em; line-height:1.8;}
+
+  @media(max-width:900px){
+    .pillars{grid-template-columns:1fr;}
+    .team-grid{grid-template-columns:repeat(2,1fr);}
+    .contact-block{grid-template-columns:1fr; padding:44px 30px;}
+    .holding{grid-template-columns:1fr; text-align:left; gap:12px;}
+    .holding .figure{text-align:left;}
+  }
+  @media(max-width:640px){
+    nav{padding:18px 5vw;}
+    .nav-links{display:none;}
+    section{padding:72px 0;}
+    .stat-strip{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-brand">
+    <div class="mhg">MHG</div>
+    <span class="name">Majors Hunter Group</span>
+  </div>
+  <div class="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#strategy">Strategy</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="/portfolio" class="nav-cta">Investor Room</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-mark">MHG</div>
+  <h1>Majors Hunter Group</h1>
+  <div class="sub">We acquire. We develop. We invest. We build.</div>
+  <p class="lede">A private holding and investment company building enduring value across operating businesses, real estate, land, development, and strategic capital — generation over generation.</p>
+  <div class="cta-row">
+    <a href="#portfolio" class="btn btn-primary">View Portfolio →</a>
+    <a href="#contact" class="btn btn-ghost">Speak With Us</a>
+  </div>
+</section>
+
+<section id="overview">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Overview</div>
+      <h2>Operating businesses and assets with durable fundamentals.</h2>
+      <p>Majors Hunter Group acquires, develops, invests in, and builds across real estate, land, structured credit, hospitality, and strategic capital. We hold what we underwrite — principals, not a blind pool.</p>
+    </div>
+    <div class="stat-strip reveal">
+      <div class="stat"><div class="num">6+</div><div class="lbl">Active Positions</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">States — AZ · NV · FL · SD</div></div>
+      <div class="stat"><div class="num">5</div><div class="lbl">Asset Classes</div></div>
+      <div class="stat"><div class="num">2026</div><div class="lbl">Edition 01 Platform</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="strategy" class="section-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Strategy</div>
+      <h2>Four verbs. One underwriting standard.</h2>
+      <p>We move across asset classes deliberately — each position chosen for durable underlying value, a clear exit or hold thesis, and a structure our partners can stand behind.</p>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="idx">01</div>
+        <h3>We Acquire</h3>
+        <p>Operating businesses and assets with durable fundamentals — land, real estate, and structured credit positions sourced directly, not through a syndicate.</p>
+      </div>
+      <div class="pillar">
+        <div class="idx">02</div>
+        <h3>We Develop</h3>
+        <p>Real estate and land taken from entitlement through completion — ground-up hospitality and residential projects across the Southwest and Southeast.</p>
+      </div>
+      <div class="pillar">
+        <div class="idx">03</div>
+        <h3>We Invest</h3>
+        <p>Strategic capital placed with a long holding horizon — bridge lending, platform equity introductions, and participations alongside operating partners.</p>
+      </div>
+      <div class="pillar">
+        <div class="idx">04</div>
+        <h3>We Build</h3>
+        <p>Enduring value across the portfolio, generation over generation — not a quarterly return, a compounding one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Portfolio</div>
+      <h2>A working portfolio, not a pitch book</h2>
+      <p>A representative view of current positions. Specific collateral values, rates, and lender terms are available to qualified investors and lenders in the investor room.</p>
+    </div>
+    <div class="holdings reveal">
+
+      <div class="holding">
+        <div class="tag">Real Estate</div>
+        <div class="body">
+          <h3>Sedona, Arizona — Acquisition Bridge</h3>
+          <div class="loc">Sedona, Arizona</div>
+          <p>A two-property real-estate-only acquisition in Sedona, Arizona — a premium, supply-constrained market. No operating business or other asset pledged.</p>
+        </div>
+        <div class="figure">
+          <div class="amt">2 Properties</div>
+          <div class="amt-lbl">Real Estate Only</div>
+        </div>
+      </div>
+
+      <div class="holding">
+        <div class="tag">Hospitality · Development</div>
+        <div class="body">
+          <h3>Bluewater Edison Towers</h3>
+          <div class="loc">Fort Myers, Florida — Caloosahatchee River District</div>
+          <p>Twin 22-story luxury waterfront condominium towers, fully entitled, site work and foundations complete — majority-owned by MHG principals, co-developed with Prevost Development.</p>
+        </div>
+        <div class="figure">
+          <div class="amt">220</div>
+          <div class="amt-lbl">Luxury Residences</div>
+        </div>
+      </div>
+
+      <div class="holding">
+        <div class="tag">Equity Introduction</div>
+        <div class="body">
+          <h3>Midtown Las Vegas Platform</h3>
+          <div class="loc">Las Vegas Arts District, Nevada</div>
+          <p>A six-phase, mixed-use hospitality and residential platform introduced to qualified capital sources — land already owned, Phase I built and operating.</p>
+        </div>
+        <div class="figure">
+          <div class="amt">588</div>
+          <div class="amt-lbl">Units / Keys, Full Platform</div>
+        </div>
+      </div>
+
+      <div class="holding">
+        <div class="tag">Residential</div>
+        <div class="body">
+          <h3>Midtown Las Vegas Condominiums</h3>
+          <div class="loc">Las Vegas, Nevada</div>
+          <p>A boutique fifth-floor condominium position secured by a contractual developer buyback agreement — principal protected against open-market resale risk.</p>
+        </div>
+        <div class="figure">
+          <div class="amt">17</div>
+          <div class="amt-lbl">Units</div>
+        </div>
+      </div>
+
+      <div class="holding">
+        <div class="tag">Land</div>
+        <div class="body">
+          <h3>South Dakota &amp; Nebraska Land Portfolio</h3>
+          <div class="loc">Fall River County, SD &amp; Dawes County, NE</div>
+          <p>Over 800 acres of free-and-clear land holdings anchoring a bridge loan facility, with flexible parcel-level collateral designation.</p>
+        </div>
+        <div class="figure">
+          <div class="amt">800+ Ac.</div>
+          <div class="amt-lbl">Free &amp; Clear</div>
+        </div>
+      </div>
+
+      <div class="holding">
+        <div class="tag">Residential</div>
+        <div class="body">
+          <h3>Nashville Single-Family Bridge</h3>
+          <div class="loc">Nashville, Tennessee</div>
+          <p>A single-family residential property held free and clear, pledged in a standalone bridge facility.</p>
+        </div>
+        <div class="figure">
+          <div class="amt">1</div>
+          <div class="amt-lbl">Property, Free &amp; Clear</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="gate-note reveal">Full collateral detail, loan terms, and lender packages are available to qualified parties in the <a href="/portfolio">Investor Room</a>.</div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Team</div>
+      <h2>Principals, not a syndicate</h2>
+      <p>Majors Hunter Group operates as a partner platform alongside Black River Investments, under common ownership — the same principals underwrite and hold every position across both.</p>
+    </div>
+    <div class="team-grid reveal">
+      <div class="team-card"><div class="initial">BH</div><h4>Bryson Hunter</h4><div class="role">Managing Partner</div></div>
+      <div class="team-card"><div class="initial">TM</div><h4>Toulon Mattox</h4><div class="role">Managing Partner</div></div>
+      <div class="team-card"><div class="initial">JC</div><h4>Judy Circo</h4><div class="role">Managing Partner</div></div>
+      <div class="team-card"><div class="initial">TW</div><h4>Thomas Waldron</h4><div class="role">Managing Partner</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-block reveal">
+      <div>
+        <h2>Let's talk.</h2>
+        <p>For investment inquiries, lending opportunities, or diligence materials on any position in the portfolio, reach the partnership directly.</p>
+      </div>
+      <form class="contact-form" id="leadForm">
+        <input type="text" name="name" placeholder="Full name" required>
+        <input type="email" name="email" placeholder="Email address" required>
+        <input type="tel" name="phone" placeholder="Phone (optional)">
+        <input type="text" name="company" placeholder="Company / Fund (optional)">
+        <textarea name="message" placeholder="What are you looking to discuss?"></textarea>
+        <button type="submit" id="submitBtn">Send Inquiry →</button>
+        <div id="form-status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <div class="mhg">MHG</div>
+        <span>Majors Hunter Group</span>
+      </div>
+      <div class="footer-links">
+        <a href="#overview">Overview</a>
+        <a href="#strategy">Strategy</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="/portfolio">Investor Room</a>
+      </div>
+    </div>
+    <div class="footer-fine">
+      © Majors Hunter Group. This site is prepared for informational and investor-relations purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any security or note. Any such offer will be made only pursuant to definitive, executed documentation following completion of diligence. Majors Hunter Group operates alongside Black River Investments under common ownership.
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY || window.pageYOffset;
+    if(y > 40){ nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
+  }, {passive:true});
+
+  var els = document.querySelectorAll('.reveal');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+    });
+  }, {threshold:0.05, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ obs.observe(el); });
+
+  setTimeout(function(){
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }, 3000);
+})();
+</script>
+
+<script>
+(function(){
+  var form = document.getElementById('leadForm');
+  var btn = document.getElementById('submitBtn');
+  var status = document.getElementById('form-status');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    status.className = '';
+    status.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    var data = Object.fromEntries(new FormData(form).entries());
+    data.source = 'majorshuntergroup.com';
+    fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function(r){ return r.json().then(function(j){ return {ok: r.ok, body: j}; }); })
+    .then(function(res){
+      if(res.ok && res.body.ok){
+        status.className = 'ok';
+        status.textContent = 'Thanks — we will be in touch shortly.';
+        form.reset();
+      } else {
+        status.className = 'err';
+        status.textContent = 'Something went wrong. Please email info@majorshuntergroup.com directly.';
+      }
+    }).catch(function(){
+      status.className = 'err';
+      status.textContent = 'Something went wrong. Please email info@majorshuntergroup.com directly.';
+    }).finally(function(){
+      btn.disabled = false;
+      btn.textContent = 'Send Inquiry →';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
