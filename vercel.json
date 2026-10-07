@@ -3,11 +3,13 @@
   "builds": [
     { "src": "index.html", "use": "@vercel/static" },
     { "src": "portfolio/index.html", "use": "@vercel/static" },
+    { "src": "assets/**", "use": "@vercel/static" },
     { "src": "api/lead.js", "use": "@vercel/node" }
   ],
   "routes": [
     { "src": "/api/lead", "dest": "/api/lead.js" },
     { "src": "/portfolio", "dest": "/portfolio/index.html" },
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
