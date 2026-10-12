@@ -1,13 +1,55 @@
-// Majors Hunter Group — site contact form -> GoHighLevel lead capture
-// Upserts a contact + tags it, using the existing GHL Private Integration
-// Token / Location (set as Vercel env vars, never committed to the repo).
+// Majors Hunter Group site contact form.
+// Primary: forward to MHG Command (/api/intake), which creates the contact,
+// makes a task for Bryson + JC, and emails/texts both with a task link.
+// Fallback: if Command is unreachable or rejects it, push the lead to GoHighLevel
+// so an inquiry is never lost.
 //
-// Required env vars (set via `vercel env add`):
-//   GHL_TOKEN       pit-xxxxxxxx private integration token
-//   GHL_LOCATION_ID GHL location id
-//   NOTIFY_EMAIL    optional — not used yet, reserved for future email relay
+// Env vars (Vercel): INTAKE_SECRET, COMMAND_INTAKE_URL, GHL_TOKEN, GHL_LOCATION_ID
 
 const GHL_BASE = "https://services.leadconnectorhq.com";
+
+async function pushToCommand(payload) {
+  const url = process.env.COMMAND_INTAKE_URL;
+  const secret = process.env.INTAKE_SECRET;
+  if (!url || !secret) throw new Error("Command intake not configured");
+  const r = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "x-intake-secret": secret },
+    body: JSON.stringify(payload),
+  });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || !j.ok) throw new Error(`Command intake ${r.status}: ${j.error || "failed"}`);
+  return j;
+}
+
+async function pushToGhl({ name, email, phone, company, message, source }) {
+  const token = process.env.GHL_TOKEN;
+  const locationId = process.env.GHL_LOCATION_ID;
+  if (!token || !locationId) throw new Error("GHL not configured");
+  const [firstName, ...rest] = String(name).trim().split(/\s+/);
+  const headers = {
+    Authorization: "Bearer " + token,
+    "Content-Type": "application/json",
+    Version: "2021-07-28",
+  };
+  const up = await fetch(`${GHL_BASE}/contacts/upsert`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({
+      locationId, firstName, lastName: rest.join(" ") || "-", email,
+      phone: phone || undefined, companyName: company || undefined,
+      tags: ["MHG Website Lead", "Majors Hunter Group"], source: source || "majorshuntergroup.com",
+    }),
+  });
+  const uj = await up.json().catch(() => ({}));
+  if (!up.ok) throw new Error(`GHL upsert ${up.status}`);
+  const id = uj?.contact?.id;
+  if (id && message) {
+    await fetch(`${GHL_BASE}/contacts/${id}/notes`, {
+      method: "POST", headers, body: JSON.stringify({ body: `Website inquiry: ${message}` }),
+    }).catch(() => {});
+  }
+}
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -15,70 +57,29 @@ export default async function handler(req, res) {
     return res.status(405).json({ ok: false, error: "Method not allowed" });
   }
 
-  const { name, email, phone, company, message, source } = req.body || {};
+  const { name, email, phone, company, message, source, website } = req.body || {};
+
+  // Honeypot: real users never fill this hidden field.
+  if (website) return res.status(200).json({ ok: true });
 
   if (!name || !email) {
     return res.status(400).json({ ok: false, error: "Name and email are required" });
   }
 
-  const token = process.env.GHL_TOKEN;
-  const locationId = process.env.GHL_LOCATION_ID;
-
-  if (!token || !locationId) {
-    console.error("Missing GHL_TOKEN or GHL_LOCATION_ID env vars");
-    return res.status(500).json({ ok: false, error: "Server not configured" });
-  }
-
-  const [firstName, ...rest] = String(name).trim().split(/\s+/);
-  const lastName = rest.join(" ") || "-";
-
-  const headers = {
-    Authorization: `Bearer ${token}`,
-    "Content-Type": "application/json",
-    Version: "2021-07-28",
-  };
+  const payload = { name, email, phone, company, message, source: source || "majorshuntergroup.com" };
 
   try {
-    const upsertRes = await fetch(`${GHL_BASE}/contacts/upsert`, {
-      method: "POST",
-      headers,
-      body: JSON.stringify({
-        locationId,
-        firstName,
-        lastName,
-        email,
-        phone: phone || undefined,
-        companyName: company || undefined,
-        tags: ["MHG Website Lead", "Majors Hunter Group"],
-        source: source || "majorshuntergroup.com",
-      }),
-    });
-
-    const upsertJson = await upsertRes.json().catch(() => ({}));
-
-    if (!upsertRes.ok) {
-      console.error("GHL upsert failed", upsertRes.status, upsertJson);
-      return res.status(502).json({ ok: false, error: "CRM upsert failed" });
-    }
-
-    const contactId = upsertJson?.contact?.id;
-
-    // Best-effort note with the inquiry message — don't fail the request if this errors.
-    if (contactId && message) {
-      try {
-        await fetch(`${GHL_BASE}/contacts/${contactId}/notes`, {
-          method: "POST",
-          headers,
-          body: JSON.stringify({ body: `Website inquiry: ${message}` }),
-        });
-      } catch (noteErr) {
-        console.error("GHL note creation failed (non-fatal)", noteErr);
-      }
-    }
-
+    await pushToCommand(payload);
     return res.status(200).json({ ok: true });
   } catch (err) {
-    console.error("Lead handler error", err);
-    return res.status(500).json({ ok: false, error: "Unexpected server error" });
+    console.error("Command intake failed, falling back to GHL:", err.message);
+  }
+
+  try {
+    await pushToGhl(payload);
+    return res.status(200).json({ ok: true, fallback: true });
+  } catch (err) {
+    console.error("GHL fallback failed:", err.message);
+    return res.status(502).json({ ok: false, error: "Could not record inquiry" });
   }
 }
