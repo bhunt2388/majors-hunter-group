@@ -66,7 +66,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ ok: false, error: "Name and email are required" });
   }
 
-  const payload = { name, email, phone, company, message, source: source || "majorshuntergroup.com" };
+  const payload = { name, email, phone, company, message, source: source || "majorshuntergroup.com", site: "mhg" };
 
   try {
     await pushToCommand(payload);
