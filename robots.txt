@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://majorshuntergroup.com/sitemap.xml
