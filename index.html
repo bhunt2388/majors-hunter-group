@@ -39,8 +39,6 @@ a{color:inherit}
 ::selection{background:var(--gold);color:#070C16}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;padding:7px 14px;border-radius:999px;border:1px solid var(--line);color:var(--mute);background:var(--card)}
-.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);display:block}
 #progress{position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--golddim),var(--gold2));z-index:120}
 #glow{position:fixed;width:520px;height:520px;left:0;top:0;margin:-260px 0 0 -260px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(201,169,97,.10),transparent 65%);transition:opacity .5s;opacity:0;will-change:transform}
 
@@ -84,7 +82,7 @@ button.btn[type=submit]{width:100%;justify-content:space-between}
 .gridbg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:72px 72px;opacity:.55;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000,transparent 75%)}
 .hero .wrap{position:relative;z-index:2}
 .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:center}
-h1{font-family:var(--serif);font-weight:500;font-size:clamp(46px,7.6vw,118px);line-height:.98;letter-spacing:-.02em;margin:30px 0 34px}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(46px,7.6vw,118px);line-height:.98;letter-spacing:-.02em;margin:0 0 34px}
 h1 .ln{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
 h1 .ln span{display:block;transform:translateY(110%);transition:transform 1.4s var(--ease);transition-delay:calc(var(--d,0)*120ms + 200ms)}
 .on-load h1 .ln span{transform:none}
@@ -170,7 +168,7 @@ h2 em{font-style:italic;font-weight:400;color:var(--gold)}
 .pitem.feat{grid-column:span 3}
 .pgrid.filtered .pitem{grid-column:span 3}
 .pitem.hide{display:none}
-.tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,169,97,.4);padding:5px 11px;border-radius:999px}
+.tag{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .loc{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:14px}
 .pitem .bezel{height:100%}
 .pitem .core2{display:flex;flex-direction:column}
@@ -266,7 +264,6 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow rv"><i></i>Private holding and investment company</span>
         <h1>
           <span class="ln" style="--d:0"><span>We acquire.</span></span>
           <span class="ln" style="--d:1"><span>We develop.</span></span>
@@ -296,7 +293,6 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
 
 <section id="overview">
   <div class="wrap">
-    <span class="eyebrow rv"><i></i>Overview</span>
     <h2 class="rv">Operating businesses and assets with <em>durable fundamentals.</em></h2>
     <p class="sub rv">Principals who underwrite, hold, and operate. Every position across the platform is held by the same people who chose it.</p>
     <div class="stats rv">
@@ -317,7 +313,6 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
 <section id="strategy" style="padding-top:40px">
   <div class="wrap verbs">
     <div class="stick">
-      <span class="eyebrow rv"><i></i>Strategy</span>
       <h2 class="rv">Four verbs. <em>One underwriting standard.</em></h2>
       <p class="sub rv">We move across asset classes deliberately. Each position chosen for durable underlying value, a clear exit or hold thesis, and a structure our partners can stand behind.</p>
     </div>
@@ -349,7 +344,6 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
       <div class="node" style="left:12%;top:28%"><i></i>Residential</div>
     </div>
     <div>
-      <span class="eyebrow rv"><i></i>Approach</span>
       <h2 class="rv">One platform. <em>Every position underwritten the same way.</em></h2>
       <div class="checks">
         <div class="rv"><b>01</b><p><strong>Durable underlying value</strong>Hard assets and operating fundamentals that hold up across cycles.</p></div>
@@ -362,7 +356,6 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
 
 <section id="portfolio">
   <div class="wrap">
-    <span class="eyebrow rv"><i></i>Portfolio</span>
     <h2 class="rv">A working portfolio, <em>not a pitch book.</em></h2>
     <p class="sub rv">A representative view of current positions. Specific collateral values, rates, and lender terms are available to qualified investors and lenders in the investor room.</p>
     <div class="filters rv" id="filters">
@@ -382,7 +375,6 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
 
 <section id="team" style="background:var(--bg2);border-block:1px solid var(--line)">
   <div class="wrap">
-    <span class="eyebrow rv"><i></i>Team</span>
     <h2 class="rv">Principals, <em>not a syndicate.</em></h2>
     <p class="sub rv">Majors Hunter Group operates as a partner platform alongside Black River Investments, under common ownership. The same principals underwrite and hold every position across both.</p>
     <div class="team">
@@ -395,7 +387,6 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
 <section id="contact">
   <div class="wrap contact">
     <div>
-      <span class="eyebrow rv"><i></i>Contact</span>
       <h2 class="rv">Let's <em>talk.</em></h2>
       <p class="sub rv">For investment inquiries, lending opportunities, or diligence materials on any position in the portfolio, reach the partnership directly.</p>
       <div class="direct rv">
