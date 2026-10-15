@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>document.documentElement.className='js'</script>
+<script>document.documentElement.className='js'</script><script>try{if(sessionStorage.getItem('mhg'))document.documentElement.className+=' nopre';else sessionStorage.setItem('mhg','1')}catch(e){}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Majors Hunter Group | We Acquire. We Develop. We Invest. We Build.</title>
@@ -238,12 +238,63 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
   .js .rv{opacity:1;transform:none;filter:none}
   h1 .ln span{transform:none}
 }
+
+/* ===== enhancements v2 ===== */
+#pre{position:fixed;inset:0;z-index:3000;background:var(--bg);display:grid;place-items:center;animation:preOut .9s var(--ease) 1.45s forwards}
+#pre .pm{position:relative;width:132px;height:132px;display:grid;place-items:center}
+#pre img{width:78px;height:auto;opacity:0;transform:scale(.86);animation:preImg 1s var(--ease) .15s forwards;filter:drop-shadow(0 18px 40px rgba(201,169,97,.35))}
+#pre svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;transform:rotate(-90deg)}
+#pre circle{fill:none;stroke:var(--gold);stroke-width:1.2;stroke-dasharray:1;stroke-dashoffset:1;animation:preDraw 1.25s var(--ease) .1s forwards}
+#pre .nm{position:absolute;left:0;right:0;top:calc(50% + 96px);text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold2);opacity:0;animation:preImg .8s var(--ease) .7s forwards}
+@keyframes preOut{to{opacity:0;visibility:hidden;transform:translateY(-3%)}}
+@keyframes preImg{to{opacity:1;transform:none}}
+@keyframes preDraw{to{stroke-dashoffset:0}}
+.nopre #pre{display:none}
+
+.hero-light{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(560px circle at var(--lx,68%) var(--ly,40%),rgba(201,169,97,.11),transparent 62%)}
+
+.marq.rev{padding:16px 0;background:var(--bg)}
+.marq.rev .track{animation-direction:reverse;animation-duration:58s;gap:44px}
+.marq.rev .track span{font-family:var(--mono);font-style:normal;font-size:clamp(11px,1.15vw,14px);letter-spacing:.3em;text-transform:uppercase;color:var(--mute);gap:44px}
+.marq.rev .track span:nth-child(even){color:var(--gold2)}
+.marq.rev .track span::after{width:5px;height:5px}
+
+.rail{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:96;display:flex;flex-direction:column;gap:6px;opacity:0;visibility:hidden;transition:opacity .6s var(--ease),visibility .6s}
+.rail.show{opacity:1;visibility:visible}
+.rail a{position:relative;display:flex;align-items:center;justify-content:flex-end;height:26px;color:var(--fg);text-decoration:none}
+.rail a i{display:block;width:7px;height:7px;border:1px solid rgba(245,242,234,.75);border-radius:50%;transition:transform .5s var(--ease),background .4s,border-color .4s}
+.rail a span{position:absolute;right:22px;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);opacity:0;transform:translateX(8px);transition:opacity .4s var(--ease),transform .5s var(--ease);white-space:nowrap;pointer-events:none}
+.rail a:hover span,.rail a:focus-visible span,.rail a.on span{opacity:1;transform:none}
+.rail a.on i{background:var(--gold);border-color:var(--gold);transform:scale(1.5)}
+@media(max-width:1100px){.rail{display:none}}
+
+.cur{position:fixed;left:0;top:0;width:38px;height:38px;margin:-19px 0 0 -19px;border:1px solid var(--gold);border-radius:50%;pointer-events:none;z-index:2500;opacity:0;transition:width .45s var(--ease),height .45s var(--ease),margin .45s var(--ease),opacity .4s,background .4s;will-change:transform}
+.cur.on{opacity:.8}
+.cur.big{width:70px;height:70px;margin:-35px 0 0 -35px;background:rgba(201,169,97,.1)}
+@media(hover:none),(pointer:coarse){.cur{display:none}}
+
+.bezel:hover{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-4px);transition:transform .22s ease-out,border-color .6s var(--ease)}
+.hero h1{transform:translateY(calc(var(--hy,0px)*-1));opacity:var(--ho,1)}
+
+a.btn:not(.ghost):not(.sm){position:relative;overflow:hidden}
+a.btn:not(.ghost):not(.sm)::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(201,169,97,.38) 50%,transparent 65%);transform:translateX(-120%);transition:transform .9s var(--ease);pointer-events:none}
+a.btn:not(.ghost):not(.sm):hover::after{transform:translateX(120%)}
+
+.direct .copy{justify-self:start;min-height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:transparent;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--fg);cursor:pointer;transition:background .4s var(--ease),border-color .4s}
+.direct .copy:hover{border-color:var(--gold);background:rgba(201,169,97,.08)}
+.direct .copy.done{background:var(--gold);border-color:var(--gold);color:#070C16}
+.fl a.mail{font-family:var(--mono);font-size:12.5px;color:var(--gold2)}
+
+@media(prefers-reduced-motion:reduce){#pre{display:none}.hero-light,.cur{display:none}.hero h1{transform:none;opacity:1}.marq.rev .track{width:auto;padding:0 28px;flex-wrap:wrap;gap:8px 32px}}
 </style>
 </head>
 <body>
 <div id="progress"></div>
 <div id="glow"></div>
 
+<div id="pre" aria-hidden="true"><div class="pm"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" pathLength="1"/></svg><img src="/assets/mhg-monogram.webp" alt=""></div><div class="nm">Majors Hunter Group</div></div>
+<div class="rail" id="rail" role="navigation" aria-label="Section progress"><a href="#top" data-s="top"><span>Top</span><i></i></a><a href="#overview" data-s="overview"><span>Overview</span><i></i></a><a href="#strategy" data-s="strategy"><span>Strategy</span><i></i></a><a href="#approach" data-s="approach"><span>Approach</span><i></i></a><a href="#portfolio" data-s="portfolio"><span>Portfolio</span><i></i></a><a href="#team" data-s="team"><span>Team</span><i></i></a><a href="#contact" data-s="contact"><span>Contact</span><i></i></a></div>
+<div class="cur" id="cur" aria-hidden="true"></div>
 <nav>
   <div class="in">
     <a class="mark" href="#top" aria-label="Majors Hunter Group"><img src="/assets/mhg-monogram.webp" alt="MHG"><span>Majors Hunter</span></a>
@@ -260,7 +311,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
 </nav>
 
 <header class="hero" id="top">
-  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="gridbg"></div>
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="gridbg"></div><div class="hero-light" id="heroLight"></div>
   <div class="wrap">
     <div class="hero-grid">
       <div>
@@ -289,6 +340,9 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
   <div class="track" id="track">
     <span>Real Estate</span><span>Land</span><span>Structured Credit</span><span>Hospitality</span><span>Strategic Capital</span><span>Residential</span>
   </div>
+</div>
+<div class="marq rev" aria-hidden="true">
+  <div class="track" id="track2"><span>Arizona</span><span>Nevada</span><span>Florida</span><span>South Dakota</span><span>Acquire</span><span>Develop</span><span>Invest</span><span>Build</span></div>
 </div>
 
 <section id="overview">
@@ -369,8 +423,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
       <div class="pitem" data-cat="Land"><div class="bezel"><div class="core2"><span class="tag">Land</span><h3>South Dakota &amp; Nebraska Land Portfolio</h3><div class="loc">Fall River County, SD &amp; Dawes County, NE</div><p>Over 800 acres of free-and-clear land holdings anchoring a bridge loan facility, with flexible parcel-level collateral designation.</p><div class="bigstat"><div class="n">800+</div><div class="l">Acres<br>Free &amp; Clear</div></div></div></div></div>
       <div class="pitem" data-cat="Residential"><div class="bezel"><div class="core2"><span class="tag">Residential</span><h3>Nashville Single-Family Bridge</h3><div class="loc">Nashville, Tennessee</div><p>A single-family residential property held free and clear, pledged in a standalone bridge facility.</p><div class="bigstat"><div class="n">1</div><div class="l">Property<br>Free &amp; Clear</div></div></div></div></div>
     </div>
-    <p class="note rv">Full collateral detail, loan terms, and lender packages are available to qualified parties in the <a href="/portfolio">Investor Room</a>.</p>
-  </div>
+    <p class="note rv">Full collateral detail, loan terms, and lender packages are available to qualified parties in the <a href="/portfolio">Investor Room</a>.</p></div>
 </section>
 
 <section id="team" style="background:var(--bg2);border-block:1px solid var(--line)">
@@ -391,6 +444,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
       <p class="sub rv">For investment inquiries, lending opportunities, or diligence materials on any position in the portfolio, reach the partnership directly.</p>
       <div class="direct rv">
         <a href="mailto:info@majorshuntergroup.com">info@majorshuntergroup.com <span>&rarr;</span></a>
+        <button type="button" class="copy" data-copy="info@majorshuntergroup.com">Copy email</button>
       </div>
     </div>
     <div class="bezel rv"><div class="core2">
@@ -431,7 +485,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
   <div class="wrap">
     <div class="frow2">
       <div class="fb"><img src="/assets/mhg-monogram.webp" alt="MHG"><span>Majors Hunter Group</span></div>
-      <div class="fl"><a href="#overview">Overview</a><a href="#strategy">Strategy</a><a href="#portfolio">Portfolio</a><a href="#team">Team</a><a href="#contact">Contact</a><a href="/portfolio">Investor Room</a></div>
+      <div class="fl"><a href="#overview">Overview</a><a href="#strategy">Strategy</a><a href="#portfolio">Portfolio</a><a href="#team">Team</a><a href="#contact">Contact</a><a href="/portfolio">Investor Room</a><a class="mail" href="mailto:info@majorshuntergroup.com">info@majorshuntergroup.com</a></div>
     </div>
     <p class="legal">&copy; 2026 Majors Hunter Group. This website is for informational purposes only and is not an offer to sell or a solicitation of an offer to buy any security or loan. Any offering is made only to qualified parties through definitive documents.</p>
   </div>
@@ -442,12 +496,12 @@ footer{border-top:1px solid var(--line);padding:50px 0 60px;background:var(--bg2
 <script>
 (function(){
 var d=document,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-requestAnimationFrame(function(){setTimeout(function(){d.body.classList.add('on-load')},60)});
+requestAnimationFrame(function(){setTimeout(function(){d.body.classList.add('on-load')},d.documentElement.classList.contains('nopre')?60:1250)});
 
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -5% 0px'});
 d.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
 
-var tr=d.getElementById('track');tr.innerHTML+=tr.innerHTML;
+var tr=d.getElementById('track');tr.innerHTML+=tr.innerHTML;var tr2=d.getElementById('track2');if(tr2)tr2.innerHTML+=tr2.innerHTML;
 
 var st=d.getElementById('statement'),ws=st.querySelectorAll('.w');
 function so(){var r=st.getBoundingClientRect(),h=innerHeight;var p=Math.min(1,Math.max(0,(h*.85-r.top)/(r.height+h*.35)));var n=Math.round(p*ws.length);ws.forEach(function(w,i){w.classList.toggle('on',i<n)})}
@@ -495,6 +549,62 @@ if(!reduce && matchMedia('(hover:hover)').matches){
  h.addEventListener('pointerleave',function(){m.style.transform=''});
  var g=d.getElementById('glow');addEventListener('pointermove',function(e){g.style.opacity=1;g.style.transform='translate('+e.clientX+'px,'+e.clientY+'px)'},{passive:true});
 }
+})();
+</script>
+<script>
+(function(){
+  var d=document,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
+  function clamp(v,a,b){return Math.min(b,Math.max(a,v));}
+  var rail=d.getElementById('rail'),rl=rail?rail.querySelectorAll('a'):[];
+  var ids=['top','overview','strategy','approach','portfolio','team','contact'];
+  function railSync(){
+    var y=pageYOffset,mid=y+innerHeight*.45,cur='top';
+    ids.forEach(function(id){var el=d.getElementById(id);if(el&&el.getBoundingClientRect().top+y<=mid)cur=id;});
+    rl.forEach(function(a){a.classList.toggle('on',a.getAttribute('data-s')===cur);});
+    if(rail)rail.classList.toggle('show',y>innerHeight*.6);
+  }
+  addEventListener('scroll',railSync,{passive:true});railSync();
+  var h1=d.querySelector('.hero h1');
+  if(h1&&!reduce){
+    addEventListener('scroll',function(){
+      var y=pageYOffset;if(y>innerHeight*1.1)return;
+      h1.style.setProperty('--hy',(y*.12).toFixed(1)+'px');
+      h1.style.setProperty('--ho',clamp(1-y/(innerHeight*.9),0,1).toFixed(2));
+    },{passive:true});
+  }
+  var hero=d.querySelector('.hero'),hl=d.getElementById('heroLight');
+  if(hero&&hl&&fine&&!reduce){
+    hero.addEventListener('pointermove',function(e){var r=hero.getBoundingClientRect();hl.style.setProperty('--lx',(e.clientX-r.left)+'px');hl.style.setProperty('--ly',(e.clientY-r.top)+'px');});
+  }
+  var cur=d.getElementById('cur');
+  if(cur&&fine&&!reduce){
+    var tx=0,ty=0,x=0,y=0,run=false;
+    function loop(){x+=(tx-x)*.18;y+=(ty-y)*.18;cur.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';if(Math.abs(tx-x)>.2||Math.abs(ty-y)>.2)requestAnimationFrame(loop);else run=false;}
+    addEventListener('pointermove',function(e){tx=e.clientX;ty=e.clientY;cur.classList.add('on');if(!run){run=true;requestAnimationFrame(loop);}});
+    d.documentElement.addEventListener('pointerleave',function(){cur.classList.remove('on');});
+    d.querySelectorAll('a,button,input,textarea').forEach(function(el){
+      el.addEventListener('pointerenter',function(){cur.classList.add('big');});
+      el.addEventListener('pointerleave',function(){cur.classList.remove('big');});
+    });
+  }
+  if(fine&&!reduce){
+    d.querySelectorAll('.bezel').forEach(function(b){
+      b.addEventListener('pointermove',function(e){
+        var r=b.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+        b.style.setProperty('--ry',(px*7).toFixed(2)+'deg');b.style.setProperty('--rx',(py*-7).toFixed(2)+'deg');
+      });
+      b.addEventListener('pointerleave',function(){b.style.setProperty('--ry','0deg');b.style.setProperty('--rx','0deg');});
+    });
+  }
+  d.querySelectorAll('.copy').forEach(function(btn){
+    var label=btn.textContent;
+    btn.addEventListener('click',function(){
+      var t=btn.getAttribute('data-copy');
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent=label;btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){});}
+      else{var ta=d.createElement('textarea');ta.value=t;d.body.appendChild(ta);ta.select();try{d.execCommand('copy');ok();}catch(e){}d.body.removeChild(ta);}
+    });
+  });
 })();
 </script>
 </body>
