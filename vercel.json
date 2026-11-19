@@ -18,6 +18,10 @@
       "use": "@vercel/static"
     },
     {
+      "src": "privacy/index.html",
+      "use": "@vercel/static"
+    },
+    {
       "src": "api/lead.js",
       "use": "@vercel/node"
     }
@@ -26,6 +30,10 @@
     {
       "src": "/api/lead",
       "dest": "/api/lead.js"
+    },
+    {
+      "src": "/privacy",
+      "dest": "/privacy/index.html"
     },
     {
       "src": "/portfolio",

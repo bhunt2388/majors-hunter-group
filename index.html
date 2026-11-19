@@ -485,7 +485,7 @@ a.btn:not(.ghost):not(.sm):hover::after{transform:translateX(120%)}
   <div class="wrap">
     <div class="frow2">
       <div class="fb"><img src="/assets/mhg-monogram.webp" alt="MHG"><span>Majors Hunter Group</span></div>
-      <div class="fl"><a href="#overview">Overview</a><a href="#strategy">Strategy</a><a href="#portfolio">Portfolio</a><a href="#team">Team</a><a href="#contact">Contact</a><a href="/portfolio">Investor Room</a><a class="mail" href="mailto:info@majorshuntergroup.com">info@majorshuntergroup.com</a></div>
+      <div class="fl"><a href="#overview">Overview</a><a href="#strategy">Strategy</a><a href="#portfolio">Portfolio</a><a href="#team">Team</a><a href="#contact">Contact</a><a href="/portfolio">Investor Room</a><a href="/privacy">Privacy Policy</a><a class="mail" href="mailto:info@majorshuntergroup.com">info@majorshuntergroup.com</a></div>
     </div>
     <p class="legal">&copy; 2026 Majors Hunter Group. This website is for informational purposes only and is not an offer to sell or a solicitation of an offer to buy any security or loan. Any offering is made only to qualified parties through definitive documents.</p>
   </div>
@@ -607,5 +607,5 @@ if(!reduce && matchMedia('(hover:hover)').matches){
   });
 })();
 </script>
-</body>
+<script data-ts-guard>(function(){var K="0x4AAAAAAGIeWFJMj9RIBWE1",f=window.fetch,p=null;function tok(){return new Promise(function(ok){function go(){var d=document.createElement("div");d.style.cssText="position:fixed;bottom:8px;right:8px;z-index:99999";document.body.appendChild(d);window.turnstile.render(d,{sitekey:K,size:"flexible",callback:function(t){ok(t);setTimeout(function(){d.remove()},500)},"error-callback":function(){ok("")}})}if(window.turnstile)return go();var s=document.createElement("script");s.src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";s.onload=go;s.onerror=function(){ok("")};document.head.appendChild(s)})}window.fetch=function(u,o){if(typeof u==="string"&&u.indexOf("/api/lead")===0){return tok().then(function(t){o=o||{};o.headers=Object.assign({},o.headers,{"x-turnstile":t});return f(u,o)})}return f.apply(this,arguments)}})()</script></body>
 </html>
